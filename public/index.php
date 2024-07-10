@@ -1,10 +1,15 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../config/Database.php';
 
 echo "scandinaviasasa";
 
-if($conn) {
-    echo "Connection error: " . mysqli_connect_error();
+
+try {
+    $db = Database::getInstance();
+    $pdo = $db->getConnection();
+    echo "Connection successful!";
+} catch (PDOException $e) {
+    echo "Connection error: " . $e->getMessage();
 }
