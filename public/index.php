@@ -3,8 +3,6 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/Database.php';
 
-echo "scandinaviasasa";
-
 
 try {
     $db = Database::getInstance();

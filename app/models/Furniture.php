@@ -38,7 +38,7 @@ class Furniture extends Product
         $this->length = $length;
     }
 
-    public function getLenght(): int
+    public function getLength(): int
     {
         return $this->length;
     }
