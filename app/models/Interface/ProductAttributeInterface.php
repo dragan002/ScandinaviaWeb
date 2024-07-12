@@ -2,7 +2,7 @@
 
 namespace App\models\Interface;
 
-interface ProductAttributeInteface
+interface ProductAttributeInterface
 {
     public function getAttribute(): string;
 }

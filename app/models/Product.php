@@ -2,9 +2,9 @@
 
 namespace App\models;
 
-use App\models\Interface\ProductAttributeInteface;
+use App\models\Interface\ProductAttributeInterface;
 
-abstract class Product implements ProductAttributeInteface
+abstract class Product implements ProductAttributeInterface
 {
     protected string $sku;
     protected string $name;

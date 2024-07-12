@@ -20,9 +20,11 @@ class ProductRepository
     public function findAll(): array
     {
         $stmt = $this->pdo->query('SELECT * FROM products ORDER BY id');
-        $products =[];
-        while($row = $stmt->fetch()) {
-            $products = $this->createProduct($row);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        $products = [];
+
+        foreach ($rows as $row) {
+            $products[] = $this->createProduct($row);
         }
         return $products;
     }
@@ -34,30 +36,33 @@ class ProductRepository
         return $stmt->execute($skus);
     }
 
-    private function createProduct(array $data): Product
+      private function createProduct(array $data): Product
     {
         $className = 'App\models\\' . ucfirst(strtolower($data['type']));
-        if(!class_exists($className))
-        {
+        if (!class_exists($className)) {
             throw new \Exception('Invalid product type: ' . $data['type']);
         }
-        
-        return new $className(
-            $data['sku'],
-            $data['name'],
-            $data['price'],
-            $data['size'] ?? null,
-            $data['weight'] ?? null,
-            $data['width'] ?? null,
-            $data['height'] ?? null,
-            $data['length'] ?? null
-        );
+
+        if ($className === 'App\models\Furniture') {
+            if (isset($data['height'], $data['width'], $data['length'])) {
+                return new $className(
+                    $data['sku'],
+                    $data['name'],
+                    $data['price'],
+                    (float)$data['height'],
+                    (float)$data['width'],
+                    (float)$data['length']
+                );
+            } else {
+                throw new \Exception('Missing dimensions for furniture');
+            }
+        }
     }
 
     public function save(Product $product): void 
     {
-        $stmt = $this->pdo->prepare("INSERT INTO products (sku, name, price, type, size, weight, height, width, length) VALUES (? ? ? ? ? ? ? ? ?)");
-        
+        $stmt = $this->pdo->prepare("INSERT INTO products (sku, name, price, type, size, weight, height, width, length) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
         $stmt->execute([
             $product->getSku(),
             $product->getName(),
@@ -69,7 +74,7 @@ class ProductRepository
             $product instanceof Furniture ? $product->getWidth() : null,
             $product instanceof Furniture ? $product->getLength() : null
         ]);
-    } 
+    }
 
     public function createAndSave(array $data): void
     {
@@ -77,3 +82,4 @@ class ProductRepository
         $this->save($product);
     }
 }
+
