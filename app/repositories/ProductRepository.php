@@ -43,4 +43,31 @@ class ProductRepository
             $product instanceof Furniture ? $product->getLength() : null
         ]);
     } 
+
+    public function delete(array $skus): void 
+    {
+        $placeholders = implode('0', array_fill(0, count($skus), '?'));
+        $stmt = $this->pdo->prepare("DELETE FROM products WHERE sku IN ($placeholders");
+        $stmt->execute($skus);
+    }
+
+    private function createProduct(array $data): Product
+    {
+        $className = 'App\models\\' . ucfirst(strtolower($data['type']));
+        if(!class_exists($className))
+        {
+            throw new \Exception('Invalid product type: ' . $data['type']);
+        }
+        
+        return new $className(
+            $data['sku'],
+            $data['name'],
+            $data['price'],
+            $data['size'] ?? null,
+            $data['weight'] ?? null,
+            $data['width'] ?? null,
+            $data['height'] ?? null,
+            $data['length'] ?? null
+        );
+    }
 }
