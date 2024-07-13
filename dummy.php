@@ -19,11 +19,11 @@ try {
     $productService = new ProductService($productRepository);
     $productController = new ProductController($productService);
 
-    $listServices = $productController->listProducts();
+    // $listServices = $productController->listProducts();
 
-    $dvd = new DVD('msmssasams', 'DVD Product', 19.99, 700);
-    $book = new Book('smsasasms', 'Book Product', 9.99, 1);
-    $furniture = new Furniture('okkksasssam', 'Furniture Product', 99.99, 50.0, 100.0, 200.0);
+    $dvd = new DVD('SKU123', 'DVD Product', 19.99, 700);
+    $book = new Book('SKU124', 'Book Product', 9.99, 1.5);
+    $furniture = new Furniture('SKU125', 'Furniture Product', 99.99, 50.0, 100.0, 200.0);
 
     $productRepository->save($dvd);
     $productRepository->save($book);
