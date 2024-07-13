@@ -21,14 +21,13 @@ class ProductRepository
     {
         $stmt = $this->pdo->query('SELECT * FROM products ORDER BY id');
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); 
-        // var_dump($rows);
         $products = [];
-
+        
         foreach ($rows as $row) {
             $products[] = $this->createProduct($row);
+            var_dump(count($products));
         }
         return $products;
-        var_dump($products);
     }
 
     public function delete(array $skus): bool 
@@ -46,27 +45,16 @@ class ProductRepository
         }
         // var_dump($className);
 
-        if ($className === 'App\models\Furniture') {
-            $product = new $className(
-                $data['sku'],
-                $data['name'],
-                $data['price'],
-                (float)$data['height'],
-                (float)$data['width'],
-                (float)$data['length']
-            );
-            // var_dump($className);
-            // return $product;
+        switch ($className) {
+            case 'App\models\DVD':
+                return new DVD($data['sku'], $data['name'], $data['price'], $data['size']);
+            case 'App\models\Book':
+                return new Book($data['sku'], $data['name'], $data['price'], $data['weight']);
+            case 'App\models\Furniture':
+                return new Furniture($data['sku'], $data['name'], $data['price'], $data['height'], $data['width'], $data['length']);
+            default:
+                throw new \Exception('Unsupported product type: ' . $data['type']);
         }
-
-        $product = new $className(
-            $data['sku'],
-            $data['name'],
-            $data['price'],
-            $data['size'] ?? $data['weight'] ?? null
-        );
-            var_dump($className);
-            return $product;
     }
 
     public function save(Product $product): void 

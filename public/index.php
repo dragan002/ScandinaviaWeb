@@ -11,4 +11,5 @@ $productRepository = new ProductRepository($pdo);
 $productService = new ProductService($productRepository);
 $productController = new ProductController($productService);
 
-$productController->listProducts();
+    $products = $productController->listProducts();
+?>

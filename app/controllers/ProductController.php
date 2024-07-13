@@ -1,6 +1,7 @@
 <?php
 
 namespace App\controllers;
+require_once '../helpers/helpers.php';
 
 use App\services\ProductService;
 
@@ -17,7 +18,7 @@ class ProductController
     {
         try {
             $products = $this->productService->listProducts();
-            include '/../views/product_list.php';
+            include '../views/product_list.php';
         } catch (\Exception $e) {
             echo "Error listing products: " . $e->getMessage();
         }
