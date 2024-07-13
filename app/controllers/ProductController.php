@@ -13,14 +13,13 @@ class ProductController
         $this->productService = $productService;
     }
 
-    public function listProducts() 
+    public function listProducts()
     {
         try {
             $products = $this->productService->listProducts();
-            include __DIR__ . '/../views/productList.php';
-        } catch(\Exception $e)
-        {
-            echo "Error: " . $e->getMessage();
+            include '/../views/product_list.php';
+        } catch (\Exception $e) {
+            echo "Error listing products: " . $e->getMessage();
         }
     }
 

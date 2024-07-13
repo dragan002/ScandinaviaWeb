@@ -21,12 +21,14 @@ class ProductRepository
     {
         $stmt = $this->pdo->query('SELECT * FROM products ORDER BY id');
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        // var_dump($rows);
         $products = [];
 
         foreach ($rows as $row) {
             $products[] = $this->createProduct($row);
         }
         return $products;
+        var_dump($products);
     }
 
     public function delete(array $skus): bool 
@@ -39,32 +41,32 @@ class ProductRepository
     private function createProduct(array $data): Product
     {
         $className = 'App\models\\' . ucfirst(strtolower($data['type']));
-        if(!class_exists($className))
-        {
+        if (!class_exists($className)) {
             throw new \Exception('Invalid product type: ' . $data['type']);
         }
-        
-        $params = [
+        // var_dump($className);
+
+        if ($className === 'App\models\Furniture') {
+            $product = new $className(
+                $data['sku'],
+                $data['name'],
+                $data['price'],
+                (float)$data['height'],
+                (float)$data['width'],
+                (float)$data['length']
+            );
+            // var_dump($className);
+            // return $product;
+        }
+
+        $product = new $className(
             $data['sku'],
             $data['name'],
             $data['price'],
-        ];
-
-        switch($data['type']) {
-            case 'dvd':
-                $params[] = $data['size'];
-                break;
-            case 'book':
-                $params[] = $data['weight'];
-                break;
-            case 'furniture':
-                $params[] = $data['height'];
-                $params[] = $data['width'];
-                $params[] = $data['length'];
-                break;
-        }
-        $product = new $className(...$params);
-        return $product;
+            $data['size'] ?? $data['weight'] ?? null
+        );
+            var_dump($className);
+            return $product;
     }
 
     public function save(Product $product): void 

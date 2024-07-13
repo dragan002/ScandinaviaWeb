@@ -15,7 +15,9 @@ class ProductService
 
     public function listProducts(): array 
     {
-        return $this->productRepository->findAll();
+        $products = $this->productRepository->findAll();
+        var_dump($products);
+        return $products;
     }
 
     public function addProduct(array $data): void

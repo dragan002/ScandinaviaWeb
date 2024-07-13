@@ -2,6 +2,8 @@
 
 namespace App\models;
 
+use App\models\Product;
+
 class Furniture extends Product
 {
     private float $height;

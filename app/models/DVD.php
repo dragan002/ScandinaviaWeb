@@ -2,6 +2,8 @@
 
 namespace App\models;
 
+use App\models\Product;
+
 class DVD extends Product
 {
     private int $size;

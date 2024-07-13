@@ -2,6 +2,8 @@
 
 namespace App\models;
 
+use App\models\Product;
+
 class Book extends Product
 {
     private int $weight;
