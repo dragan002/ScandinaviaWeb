@@ -2,8 +2,6 @@
 
 namespace App\models;
 
-use App\models\Product;
-
 class Furniture extends Product
 {
     private float $height;
@@ -13,9 +11,9 @@ class Furniture extends Product
     public function __construct(string $sku, string $name, float $price, float $height, float $width, float $length)
     {
         parent::__construct($sku, $name, $price, 'Furniture');
-        $this->height = $height;
-        $this->width = $width;
-        $this->length = $length;
+            $this->height   = $height;
+            $this->width    = $width;
+            $this->length   = $length;
     }
 
     public function setHeight(float $height): void
@@ -31,6 +29,16 @@ class Furniture extends Product
     public function getWidth(): float
     {
         return $this->width;
+    }
+
+    public function setWidth(float $width): void 
+    {
+        $this->width = $width;
+    }
+
+    public function setLength(float $length): void
+    {
+        $this->length = $length;
     }
 
     public function getLength(): float

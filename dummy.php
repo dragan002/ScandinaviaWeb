@@ -20,15 +20,14 @@ try {
     $productController = new ProductController($productService);
 
     $listServices = $productController->listProducts();
-    print_r($listServices);
 
-    // $dvd = new DVD('SKU123', 'DVD Product', 19.99, 700);
-    $book = new Book('SKU124', 'Book Product', 9.99, 1.5);
-    // $furniture = new Furniture('SKU1sasa2dsa5', 'Furniture Product', 9999, 502, 10032, 20032);
+    $dvd = new DVD('msmssasams', 'DVD Product', 19.99, 700);
+    $book = new Book('smsasasms', 'Book Product', 9.99, 1);
+    $furniture = new Furniture('okkksasssam', 'Furniture Product', 99.99, 50.0, 100.0, 200.0);
 
-
-    $productRepository->save($furniture);
+    $productRepository->save($dvd);
     $productRepository->save($book);
+    $productRepository->save($furniture);
 
     echo "Dummy data inserted successfully.";
 } catch (Exception $e) {

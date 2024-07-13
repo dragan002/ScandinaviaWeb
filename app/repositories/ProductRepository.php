@@ -36,27 +36,35 @@ class ProductRepository
         return $stmt->execute($skus);
     }
 
-      private function createProduct(array $data): Product
+    private function createProduct(array $data): Product
     {
         $className = 'App\models\\' . ucfirst(strtolower($data['type']));
-        if (!class_exists($className)) {
+        if(!class_exists($className))
+        {
             throw new \Exception('Invalid product type: ' . $data['type']);
         }
+        
+        $params = [
+            $data['sku'],
+            $data['name'],
+            $data['price'],
+        ];
 
-        if ($className === 'App\models\Furniture') {
-            if (isset($data['height'], $data['width'], $data['length'])) {
-                return new $className(
-                    $data['sku'],
-                    $data['name'],
-                    $data['price'],
-                    (float)$data['height'],
-                    (float)$data['width'],
-                    (float)$data['length']
-                );
-            } else {
-                throw new \Exception('Missing dimensions for furniture');
-            }
+        switch($data['type']) {
+            case 'dvd':
+                $params[] = $data['size'];
+                break;
+            case 'book':
+                $params[] = $data['weight'];
+                break;
+            case 'furniture':
+                $params[] = $data['height'];
+                $params[] = $data['width'];
+                $params[] = $data['length'];
+                break;
         }
+        $product = new $className(...$params);
+        return $product;
     }
 
     public function save(Product $product): void 
