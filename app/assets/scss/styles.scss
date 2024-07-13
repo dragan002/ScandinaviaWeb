@@ -1,0 +1,14 @@
+$primary-color: #3498db;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: $primary-color;
+    color: #dd0b0b;
+    font-size: 30px;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}

@@ -21,11 +21,13 @@ class ProductFactory
             $data['sku'],
             $data['name'],
             (float) $data['price'],
-            (float) ($data['size'] ?? 0),
-            (float) ($data['weight'] ?? 0),
-            (float) ($data['height'] ?? 0),
-            (float) ($data['width'] ?? 0),
-            (float) ($data['length'] ?? 0)
+           ...array_map('floatval', array_filter([
+                'size' => $data['size']?? 0,
+                'weight' => $data['weight']?? 0,
+                'height' => $data['height']?? 0,
+                'width' => $data['width']?? 0,
+                'length' => $data['length']?? 0,
+            ]))
         );
-    }
+}
 }
