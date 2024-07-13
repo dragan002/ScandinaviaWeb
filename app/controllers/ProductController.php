@@ -1,12 +1,13 @@
 <?php
 
 namespace App\controllers;
-require_once '../helpers/helpers.php';
 
 use App\services\ProductService;
 
 class ProductController 
 {
+    public $products;
+
     private $productService;
 
     public function __construct(ProductService $productService)

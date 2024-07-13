@@ -25,7 +25,7 @@ class ProductRepository
         
         foreach ($rows as $row) {
             $products[] = $this->createProduct($row);
-            var_dump(count($products));
+            var_dump($products);
         }
         return $products;
     }
