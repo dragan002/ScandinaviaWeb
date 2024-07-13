@@ -11,7 +11,8 @@ $productRepository = new ProductRepository($pdo);
 $productService = new ProductService($productRepository);
 $productController = new ProductController($productService);
 
-    $products = $productController->listProducts();
+$productController->listProducts();
 
-    var_dump($products);
+ 
+
 ?>
