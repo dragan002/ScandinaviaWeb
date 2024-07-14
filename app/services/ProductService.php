@@ -18,10 +18,10 @@ class ProductService
         return $this->productRepository->findAll();
     }
 
-    public function addProduct(array $data): void
-    {
-        $this->productRepository->createAndSave($data);
-    }
+    // public function addProduct(array $data): void
+    // {
+    //     $this->productRepository->createAndSave($data);
+    // }
 
     public function deleteProducts(array $skus): bool 
     {

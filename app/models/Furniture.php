@@ -28,14 +28,14 @@ class Furniture extends Product
         return $this->height;
     }
 
-    public function getWidth(): float
-    {
-        return $this->width;
-    }
-
     public function setWidth(float $width): void 
     {
         $this->width = $width;
+    }
+
+    public function getWidth(): float
+    {
+        return $this->width;
     }
 
     public function setLength(float $length): void

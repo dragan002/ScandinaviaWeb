@@ -3,10 +3,11 @@
 namespace App\repositories;
 
 use PDO;
-use App\models\Product;
 use App\models\DVD;
 use App\models\Book;
+use App\models\Product;
 use App\models\Furniture;
+use App\factories\ProductFactory;
 
 class ProductRepository 
 {
@@ -24,8 +25,7 @@ class ProductRepository
         $products = [];
         
         foreach ($rows as $row) {
-            $products[] = $this->createProduct($row);
-            var_dump($products);
+        $products[] = ProductFactory::create($row);
         }
         return $products;
     }
@@ -35,26 +35,6 @@ class ProductRepository
         $placeholders = implode('0', array_fill(0, count($skus), '?'));
         $stmt = $this->pdo->prepare("DELETE FROM products WHERE sku IN ($placeholders");
         return $stmt->execute($skus);
-    }
-
-    private function createProduct(array $data): Product
-    {
-        $className = 'App\models\\' . ucfirst(strtolower($data['type']));
-        if (!class_exists($className)) {
-            throw new \Exception('Invalid product type: ' . $data['type']);
-        }
-        var_dump($className);
-
-        switch ($className) {
-            case 'App\models\DVD':
-                return new DVD($data['sku'], $data['name'], $data['price'], $data['size']);
-            case 'App\models\Book':
-                return new Book($data['sku'], $data['name'], $data['price'], $data['weight']);
-            case 'App\models\Furniture':
-                return new Furniture($data['sku'], $data['name'], $data['price'], $data['height'], $data['width'], $data['length']);
-            default:
-                throw new \Exception('Unsupported product type: ' . $data['type']);
-        }
     }
 
     public function save(Product $product): void 
@@ -74,20 +54,4 @@ class ProductRepository
         ]);
     }
 
-    public function createAndSave(array $data): void
-    {
-        $product = $this->createProduct($data);
-        $this->save($product);
-    }
 }
-
-//  "App\models\Furniture" array(1) {
-//      [0]=> object(App\models\Furniture)#9 
-//      (7) { ["sku":protected]=> string(9) "YSHR763-C" 
-//         ["name":protected]=> string(8) "KIA SOFA" 
-//         ["price":protected]=> float(288) 
-//         ["type":protected]=> string(9) "Furniture" 
-//         ["height":"App\models\Furniture":private]=> float(200) 
-//         ["width":"App\models\Furniture":private]=> float(300) 
-//         ["length":"App\models\Furniture":private]=> float(400) } }
-//          string(20) "App\models\Furniture" 

@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Product List</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
     <h1>Product List</h1>
     <form id="product-list" method="POST" action="index.php?action=delete">
         <?php if (isset($products) && count($products) > 0): ?>
             <?php foreach ($products as $product): ?>
-                <div class="product">
+                <div class="product" style="background-color: red;">
                     <input type="checkbox" name="delete[]" value="<?= $product->getSku() ?>" class="delete-checkbox">
                     <p>SKU: <?= $product->getSku() ?></p>
                     <p>Name: <?= $product->getName() ?></p>
