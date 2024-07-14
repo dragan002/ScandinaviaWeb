@@ -55,14 +55,3 @@ class ProductRepository
     }
 
 }
-
-//  "App\models\Furniture" array(1) {
-//      [0]=> object(App\models\Furniture)#9 
-//      (7) { ["sku":protected]=> string(9) "YSHR763-C" 
-//         ["name":protected]=> string(8) "KIA SOFA" 
-//         ["price":protected]=> float(288) 
-//         ["type":protected]=> string(9) "Furniture" 
-//         ["height":"App\models\Furniture":private]=> float(200) 
-//         ["width":"App\models\Furniture":private]=> float(300) 
-//         ["length":"App\models\Furniture":private]=> float(400) } }
-//          string(20) "App\models\Furniture" 

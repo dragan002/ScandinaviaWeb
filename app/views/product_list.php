@@ -11,7 +11,7 @@
     <form id="product-list" method="POST" action="index.php?action=delete">
         <?php if (isset($products) && count($products) > 0): ?>
             <?php foreach ($products as $product): ?>
-                <div class="product">
+                <div class="product" style="background-color: red;">
                     <input type="checkbox" name="delete[]" value="<?= $product->getSku() ?>" class="delete-checkbox">
                     <p>SKU: <?= $product->getSku() ?></p>
                     <p>Name: <?= $product->getName() ?></p>

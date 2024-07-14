@@ -22,11 +22,11 @@ class ProductFactory
             $data['name'],
             (float) $data['price'],
            ...array_map('floatval', array_filter([
-                'size' => $data['size']?? 0,
-                'weight' => $data['weight']?? 0,
-                'height' => $data['height']?? 0,
-                'width' => $data['width']?? 0,
-                'length' => $data['length']?? 0,
+                'size'      => $data['size']?? 0,
+                'weight'    => $data['weight']?? 0,
+                'height'    => $data['height']?? 0,
+                'width'     => $data['width']?? 0,
+                'length'    => $data['length']?? 0,
             ]))
         );
 }
