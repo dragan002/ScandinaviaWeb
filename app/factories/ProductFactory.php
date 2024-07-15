@@ -29,5 +29,5 @@ class ProductFactory
                 'length'    => $data['length']?? 0,
             ]))
         );
-}
+    }
 }

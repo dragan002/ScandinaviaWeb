@@ -29,25 +29,15 @@ class ProductController
         }
     }
 
-    // public function addProduct(array $data) {
-    //     try {
-    //         $product = $this->productService->addProduct($data);
-    //         include __DIR__ . 'public/index.php';
-    //     } catch(\Exception $e) {
-    //         echo "Error during adding product: " . $e->getMessage();
-    //     }
-    // }
-
-    public function deleteProducts(array $skus)
-    {
+    public function addProduct(array $data) {
         try {
-            $success = $this->productService->deleteProducts($skus);
-            if(!$success) {
-                echo "Could not delete the products";
-            }
-            header('Location: public/index.php');
+            $data = $_POST;
+            
+            $product = $this->productService->addProduct($data);
+            
+            header('Location: /public/index.php');
         } catch(\Exception $e) {
-            echo "Error deleting products " . $e->getMessage();
+            echo "Error during adding product: " . $e->getMessage();
         }
     }
 }

@@ -3,7 +3,7 @@
         <div class="product-list__header">
             <h1 class="product-list__title">Product List</h1>
             <div class="product-list__buttons">
-                <button class="product-list__button product-list__button--add">ADD</button>
+                <button class="product-list__button product-list__button--add"><a href="../app/views/add_product.php">ADD</a></button>
                 <button class="product-list__button product-list__button--delete" onclick="massDelete()">MASS DELETE</button>
             </div>
         </div>

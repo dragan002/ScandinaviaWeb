@@ -30,13 +30,6 @@ class ProductRepository
         return $products;
     }
 
-    public function delete(array $skus): bool 
-    {
-        $placeholders = implode('0', array_fill(0, count($skus), '?'));
-        $stmt = $this->pdo->prepare("DELETE FROM products WHERE sku IN ($placeholders");
-        return $stmt->execute($skus);
-    }
-
     public function save(Product $product): void 
     {
         $stmt = $this->pdo->prepare("INSERT INTO products (sku, name, price, type, size, weight, height, width, length) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -53,5 +46,4 @@ class ProductRepository
             $product instanceof Furniture ? $product->getLength() : null
         ]);
     }
-
 }

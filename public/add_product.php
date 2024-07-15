@@ -1,13 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../app/assets/css/styles.css">
-</head>
-
 <?php
+
 require_once '../config/Database.php';
 require_once '../vendor/autoload.php';
 
@@ -20,7 +12,8 @@ $productRepository = new ProductRepository($pdo);
 $productService = new ProductService($productRepository);
 $productController = new ProductController($productService);
 
-$productController->listProducts();
-
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+       $product = $productController->addProduct($data);
+}
+var_dump($product);
 ?>
