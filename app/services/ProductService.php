@@ -61,7 +61,7 @@ class ProductService
             case 'furniture':
                 if (
                     !isset($data['height']) || !is_numeric($data['height']) || $data['height'] <= 0 ||
-                    !isset($data['width']) || !is_numeric($data['width']) || $data['width'] <= 0 ||
+                    !isset($data['width'])  || !is_numeric($data['width'])  || $data['width'] <= 0 ||
                     !isset($data['length']) || !is_numeric($data['length']) || $data['length'] <= 0
                 ) {
                     throw new \InvalidArgumentException('Invalid dimensions for furniture');
@@ -71,9 +71,8 @@ class ProductService
                 throw new \InvalidArgumentException('Unsupported product type');
         }
 
-        $data['sku'] = htmlspecialchars($data['sku']);
-        $data['name'] = htmlspecialchars($data['name']);
-        // Sanitize other fields as needed
+        $data['sku']    = htmlspecialchars($data['sku']);
+        $data['name']   = htmlspecialchars($data['name']);
 
         return $data;
     }
