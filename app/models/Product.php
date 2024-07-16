@@ -39,7 +39,7 @@ abstract class Product implements ProductAttributeInterface
         return $this->name;
     }
 
-    public function setPrice(string $price): void
+    public function setPrice(float $price): void
     {
         $this->price = $price;
     }

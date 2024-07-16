@@ -34,8 +34,10 @@ class ProductController
             $data = $_POST;
             
             $product = $this->productService->addProduct($data);
+            var_dump($product);
             
-            header('Location: /public/index.php');
+            
+            include __DIR__ . '/../views/add_product.php';
         } catch(\Exception $e) {
             echo "Error during adding product: " . $e->getMessage();
         }

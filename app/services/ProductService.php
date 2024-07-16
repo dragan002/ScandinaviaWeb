@@ -23,10 +23,11 @@ class ProductService
     public function addProduct(array $data): void
     {
         $validatedData = $this->validateData($data);
-
+        
         $product = ProductFactory::create($validatedData);
-
-        $this->productRepository->save($product);
+        
+        $save = $this->productRepository->save($product);
+        var_dump($save);
     }
 
     private function validateData(array $data): array
@@ -39,7 +40,7 @@ class ProductService
             throw new \InvalidArgumentException('Invalid Name');
         }
 
-        if(!isset($data['price']) || !is_numeric($data['price']) || $data['price']) {
+        if(!isset($data['price']) || !is_numeric($data['price'])) {
             throw new \InvalidArgumentException('Invalid price');
         }
 
