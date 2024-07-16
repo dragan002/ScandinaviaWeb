@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../app/assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../App/assets/css/styles.css">
 </head>
 
 <?php
-require_once '../config/Database.php';
+require_once '../Config/Database.php';
 require_once '../vendor/autoload.php';
 
-use App\controllers\ProductController;
-use App\repositories\ProductRepository;
-use App\services\ProductService;
+use Database;
+use App\Services\ProductService;
+use App\Controllers\ProductController;
+use App\Repositories\ProductRepository;
 
-$pdo = Database::getInstance()->getConnection();
+$pdo                = Database::getInstance()->getConnection();
 $productRepository  = new ProductRepository($pdo);
 $productService     = new ProductService($productRepository);
 $productController  = new ProductController($productService);

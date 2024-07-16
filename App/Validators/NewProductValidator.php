@@ -1,36 +1,10 @@
 <?php
 
-namespace App\services;
+namespace App\Validators;
 
-use App\factories\ProductFactory;
-use App\models\Product;
-use App\repositories\ProductRepository;
+class NewProductValidator {
 
-class ProductService 
-{
-    private $productRepository;
-
-    public function __construct(ProductRepository $productRepository)
-    {
-        $this->productRepository = $productRepository;
-    }
-
-    public function listProducts(): array 
-    {
-        return $this->productRepository->findAll();
-    }
-
-    public function addProduct(array $data): void
-    {
-        $validatedData = $this->validateData($data);
-        
-        $product = ProductFactory::create($validatedData);
-        
-        $save = $this->productRepository->save($product);
-        var_dump($save);
-    }
-
-    private function validateData(array $data): array
+    public function validateData(array $data): array
     {
         if(empty($data['sku']) || !is_string($data['sku'])) {
             throw new \InvalidArgumentException('Invalid SKU');
@@ -40,7 +14,7 @@ class ProductService
             throw new \InvalidArgumentException('Invalid Name');
         }
 
-        if(!isset($data['price']) || !is_numeric($data['price'])) {
+        if(!isset($data['price']) || !is_numeric($data['price']) || $data['price'] <= 0) {
             throw new \InvalidArgumentException('Invalid price');
         }
 

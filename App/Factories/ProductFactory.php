@@ -1,17 +1,14 @@
 <?php
 
-namespace App\factories;
+namespace App\Factories;
 
-use App\models\DVD;
-use App\models\Book;
-use App\models\Furniture;
-use App\models\Product;
+use App\Models\Product;
 
 class ProductFactory
 {
     public static function create(array $data): Product
     {
-        $className = 'App\models\\' . ucfirst(strtolower($data['type']));
+        $className = 'App\Models\\' . ucfirst(strtolower($data['type']));
         
         if (!class_exists($className)) {
             throw new \Exception('Unsupported product type: ' . $data['type']);

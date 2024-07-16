@@ -2,7 +2,7 @@
   "name": "scandiweb-test",
   "version": "1.0.0",
   "scripts": {
-      "compile:sass": "sass app/assets/scss/styles.scss app/assets/css/styles.css"
+      "compile:sass": "sass App/assets/scss/styles.scss App/assets/css/styles.css"
   },
   "devDependencies": {
       "sass": "^1.32.8"

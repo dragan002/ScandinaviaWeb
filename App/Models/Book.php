@@ -1,8 +1,8 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
-use App\models\Product;
+use App\Models\Product;
 
 class Book extends Product
 {

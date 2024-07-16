@@ -1,11 +1,8 @@
 <?php
 
-namespace App\controllers;
+namespace App\Controllers;
 
-use App\models\DVD;
-use App\models\Book;
-use App\models\Furniture;
-use App\services\ProductService;
+use App\Services\ProductService;
 
 class ProductController 
 {
@@ -34,10 +31,8 @@ class ProductController
             $data = $_POST;
             
             $product = $this->productService->addProduct($data);
-            var_dump($product);
-            
-            
-            include __DIR__ . '/../views/add_product.php';
+                        
+            header('Location: index.php');
         } catch(\Exception $e) {
             echo "Error during adding product: " . $e->getMessage();
         }

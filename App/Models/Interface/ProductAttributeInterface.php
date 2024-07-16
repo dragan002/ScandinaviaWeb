@@ -1,6 +1,6 @@
 <?php
 
-namespace App\models\Interface;
+namespace App\Models\Interface;
 
 interface ProductAttributeInterface
 {
