@@ -2,9 +2,42 @@
   "name": "scandiweb-test",
   "version": "1.0.0",
   "scripts": {
-      "compile:sass": "sass App/assets/scss/styles.scss App/assets/css/styles.css"
+    "compile:sass": "sass App/assets/scss/styles.scss App/assets/css/styles.css"
   },
   "devDependencies": {
-      "sass": "^1.32.8"
-  }
+    "gulp": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.77.8"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "anymatch": "^3.1.3",
+    "binary-extensions": "^2.3.0",
+    "braces": "^3.0.3",
+    "chokidar": "^3.6.0",
+    "fill-range": "^7.1.1",
+    "glob-parent": "^5.1.2",
+    "immutable": "^4.3.6",
+    "is-binary-path": "^2.1.0",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "is-number": "^7.0.0",
+    "normalize-path": "^3.0.0",
+    "picomatch": "^2.3.1",
+    "readdirp": "^3.6.0",
+    "source-map-js": "^1.2.0",
+    "to-regex-range": "^5.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragan002/ScandinaviaWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dragan002/ScandinaviaWeb/issues"
+  },
+  "homepage": "https://github.com/dragan002/ScandinaviaWeb#readme",
+  "description": ""
 }

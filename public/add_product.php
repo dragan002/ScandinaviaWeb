@@ -15,7 +15,6 @@ $productService      = new ProductService($productRepository);
 $productController   = new ProductController($productService);
 
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // Sanitize $_POST data
@@ -31,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'length' => FILTER_SANITIZE_NUMBER_FLOAT,
         ]);
 
-        $validator = new NewProductValidator();
-        $validatedData = $validator->validateData($data); 
+        $validator      = new NewProductValidator();
+        $validatedData  = $validator->validateData($data); 
 
         $productController->addProduct($validatedData);
 

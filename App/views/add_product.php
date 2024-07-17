@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
-    <link rel="stylesheet" href="path/to/your/css/styles.css"> <!-- Replace with your actual CSS file path -->
+    <link rel="stylesheet" href="path/to/your/css/styles.css"> 
 </head>
 <body>
     <div class="container">
@@ -61,14 +61,14 @@
     <script>
         function showAttributes() {
             const type = document.getElementById('type').value;
-            document.getElementById('book-attributes').style.display = 'none';
-            document.getElementById('dvd-attributes').style.display = 'none';
-            document.getElementById('furniture-attributes').style.display = 'none';
+            document.getElementById('book-attributes').style.display        = 'none';
+            document.getElementById('dvd-attributes').style.display         = 'none';
+            document.getElementById('furniture-attributes').style.display   = 'none';
 
             if (type === 'Book') {
-                document.getElementById('book-attributes').style.display = 'block';
+                document.getElementById('book-attributes').style.display    = 'block';
             } else if (type === 'DVD') {
-                document.getElementById('dvd-attributes').style.display = 'block';
+                document.getElementById('dvd-attributes').style.display     = 'block';
             } else if (type === 'Furniture') {
                 document.getElementById('furniture-attributes').style.display = 'block';
             }
