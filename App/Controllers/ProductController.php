@@ -37,4 +37,18 @@ class ProductController
             echo "Error during adding product: " . $e->getMessage();
         }
     }
+
+    public function deleteProducts() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteSku'])) {
+            $skusToDelete = $_POST['deleteSku'];
+            if (!empty($skusToDelete)) {
+                $this->productService->deleteProducts($skusToDelete);
+                header('Location: index.php?status=success');
+                exit;
+            } else {
+                header('Location: index.php?status=noselection');
+                exit;
+            }
+        }
+    }
 }

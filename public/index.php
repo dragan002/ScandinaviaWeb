@@ -23,4 +23,5 @@ $productController  = new ProductController($productService);
 
 $productController->listProducts();
 
+$productController->deleteProducts();
 ?>

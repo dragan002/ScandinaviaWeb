@@ -30,4 +30,9 @@ class ProductService
         
         $save = $this->productRepository->save($product);
     }
+
+    public function deleteProducts(array $sku): bool
+    {
+        return $this->productRepository->deleteProductBySku($sku);
+    }
 }
