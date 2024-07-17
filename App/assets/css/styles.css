@@ -13,15 +13,6 @@ body {
 .product-list__header__title {
   margin-bottom: 1rem;
 }
-.product-list__buttons {
-  display: flex;
-  gap: 30px;
-  margin-right: 1rem;
-}
-.product-list__buttons > * {
-  padding: 10px 20px;
-  font-weight: 500;
-}
 .product-list__form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -38,4 +29,31 @@ body {
   border: 3px solid #000;
   border-radius: 4px;
   font-weight: 600;
+}
+
+.container {
+  margin: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.form__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form__group {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.form__group--switcher {
+  display: flex;
+  gap: 3rem;
+}
+.form__group--hidden {
+  flex-direction: column;
+  width: 20%;
 }

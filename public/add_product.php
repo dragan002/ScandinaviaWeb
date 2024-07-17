@@ -14,20 +14,37 @@ $productRepository   = new ProductRepository($pdo);
 $productService      = new ProductService($productRepository);
 $productController   = new ProductController($productService);
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        // Sanitize $_POST data
+        // Sanitize $_POST data using more secure methods
         $data = filter_input_array(INPUT_POST, [
-            'sku'    => FILTER_SANITIZE_STRING,
-            'name'   => FILTER_SANITIZE_STRING,
-            'price'  => FILTER_SANITIZE_NUMBER_FLOAT,
-            'type'   => FILTER_SANITIZE_STRING,
-            'weight' => FILTER_SANITIZE_NUMBER_FLOAT,
-            'size'   => FILTER_SANITIZE_NUMBER_FLOAT,
-            'height' => FILTER_SANITIZE_NUMBER_FLOAT,
-            'width'  => FILTER_SANITIZE_NUMBER_FLOAT,
-            'length' => FILTER_SANITIZE_NUMBER_FLOAT,
+            'sku'    => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            'name'   => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            'price'  => [
+                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+                'flags'  => FILTER_FLAG_ALLOW_FRACTION
+            ],
+            'type'   => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            'weight' => [
+                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+                'flags'  => FILTER_FLAG_ALLOW_FRACTION
+            ],
+            'size'   => [
+                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+                'flags'  => FILTER_FLAG_ALLOW_FRACTION
+            ],
+            'height' => [
+                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+                'flags'  => FILTER_FLAG_ALLOW_FRACTION
+            ],
+            'width'  => [
+                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+                'flags'  => FILTER_FLAG_ALLOW_FRACTION
+            ],
+            'length' => [
+                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+                'flags'  => FILTER_FLAG_ALLOW_FRACTION
+            ],
         ]);
 
         $validator      = new NewProductValidator();

@@ -3,76 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <link rel="stylesheet" href="path/to/your/css/styles.css"> 
+    <title>Product Add</title>
+    <link rel="stylesheet" href="../assets/css/styles.css"> 
 </head>
 <body>
     <div class="container">
-        <h1>Add Product</h1>
-        <form action="../../public/add_product.php" method="POST">
-            <div class="form-group">
-                <label for="sku">SKU:</label>
-                <input type="text" id="sku" name="sku" required>
+        <form action="../../public/add_product.php" method="POST" class="form" id="product_form">
+            <div class="form__header">
+                <h1 class="form__title">Product Add</h1>
+                <div>
+                    <button type="submit" class="form__button form__button--submit">Add Product</button>
+                    <button class="form__button form__button--cancel"><a href="../../public/index.php">Cancel</a></button>
+                </div>
+            </div>
+            <div class="form__group" id="product_form-sku">
+                <label for="sku" class="form__label">SKU</label>
+                <input type="text" id="sku" name="sku" class="form__input" value="<?= htmlspecialchars($_POST['sku'] ?? '') ?>">
+                <?php if (isset($errors['sku'])): ?>
+                    <div class="form__error"><?= htmlspecialchars($errors['sku']) ?></div>
+                <?php endif; ?>
             </div>
 
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+            <div class="form__group">
+                <label for="name" class="form__label">Name</label>
+                <input type="text" id="name" name="name" class="form__input" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
+                <?php if (isset($errors['name'])): ?>
+                    <div class="form__error"><?= htmlspecialchars($errors['name']) ?></div>
+                <?php endif; ?>
             </div>
 
-            <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price" step="0.01" required>
+            <div class="form__group">
+                <label for="price" class="form__label">Price ($)</label>
+                <input type="number" id="price" name="price" class="form__input" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>">
+                <?php if (isset($errors['price'])): ?>
+                    <div class="form__error"><?= htmlspecialchars($errors['price']) ?></div>
+                <?php endif; ?>
             </div>
 
-            <div class="form-group">
-                <label for="type">Type:</label>
-                <select id="type" name="type" required onchange="showAttributes()">
-                    <option value="">Select Type</option>
-                    <option value="Book">Book</option>
-                    <option value="DVD">DVD</option>
-                    <option value="Furniture">Furniture</option>
+            <div class="form__group--switcher">
+                <label for="type" class="form__label">Type Switcher</label>
+                <select id="productType" name="type" class="form__select" required onchange="showAttributes()">
+                    <option value="">Type Switcher</option>
+                    <option value="Book" <?= isset($_POST['type']) && $_POST['type'] === 'Book' ? 'selected' : '' ?>>Book</option>
+                    <option value="DVD" <?= isset($_POST['type']) && $_POST['type'] === 'DVD' ? 'selected' : '' ?>>DVD</option>
+                    <option value="Furniture" <?= isset($_POST['type']) && $_POST['type'] === 'Furniture' ? 'selected' : '' ?>>Furniture</option>
                 </select>
+                <?php if (isset($errors['type'])): ?>
+                    <div class="form__error"><?= htmlspecialchars($errors['type']) ?></div>
+                <?php endif; ?>
             </div>
 
-            <div class="form-group" id="book-attributes" style="display: none;">
-                <label for="weight">Weight (Kg):</label>
-                <input type="number" id="weight" name="weight" step="0.01">
+            <div class="form__group form__group--hidden" id="book-attributes">
+                <label for="weight" class="form__label">Weight (Kg):</label>
+                <input type="number" id="weight" name="weight" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['weight'] ?? '') ?>">
+                <p class="form__description">Please enter the Width</p>
+                <?php if (isset($errors['weight'])): ?>
+                    <div class="form__error"><?= htmlspecialchars($errors['weight']) ?></div>
+                <?php endif; ?>
             </div>
 
-            <div class="form-group" id="dvd-attributes" style="display: none;">
-                <label for="size">Size (MB):</label>
-                <input type="number" id="size" name="size">
+            <div class="form__group form__group--hidden" id="dvd-attributes">
+                <label for="size" class="form__label">Size (MB):</label>
+                <input type="number" id="size" name="size" class="form__input" value="<?= htmlspecialchars($_POST['size'] ?? '') ?>">
+                <p class="form__description">Please enter the size of the DVD in megabytes (MB).</p>
+                <?php if (isset($errors['size'])): ?>
+                    <div class="form__error"><?= htmlspecialchars($errors['size']) ?></div>
+                <?php endif; ?>
             </div>
 
-            <div class="form-group" id="furniture-attributes" style="display: none;">
-                <label for="height">Height (cm):</label>
-                <input type="number" id="height" name="height" step="0.01">
-                <label for="width">Width (cm):</label>
-                <input type="number" id="width" name="width" step="0.01">
-                <label for="length">Length (cm):</label>
-                <input type="number" id="length" name="length" step="0.01">
+            <div class="form__group form__group--hidden" id="furniture-attributes">
+                <label for="height" class="form__label">Height (cm):</label>
+                <input type="number" id="height" name="height" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['height'] ?? '') ?>">
+                <label for="width" class="form__label">Width (cm):</label>
+                <input type="number" id="width" name="width" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['width'] ?? '') ?>">
+                <label for="length" class="form__label">Length (cm):</label>
+                <input type="number" id="length" name="length" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['length'] ?? '') ?>">
+                <p class="form__description">Please Dimenzions Height x Width x Length</p>
+                <?php if (isset($errors['dimensions'])): ?>
+                    <div class="form__error"><?= htmlspecialchars($errors['dimensions']) ?></div>
+                <?php endif; ?>
             </div>
-
-            <button type="submit">Add Product</button>
         </form>
     </div>
 
     <script>
-        function showAttributes() {
-            const type = document.getElementById('type').value;
-            document.getElementById('book-attributes').style.display        = 'none';
-            document.getElementById('dvd-attributes').style.display         = 'none';
-            document.getElementById('furniture-attributes').style.display   = 'none';
+    function showAttributes() {
+        const type = document.getElementById('productType').value;
+        document.getElementById('book-attributes').style.display = 'none';
+        document.getElementById('dvd-attributes').style.display = 'none';
+        document.getElementById('furniture-attributes').style.display = 'none';
 
-            if (type === 'Book') {
-                document.getElementById('book-attributes').style.display    = 'block';
-            } else if (type === 'DVD') {
-                document.getElementById('dvd-attributes').style.display     = 'block';
-            } else if (type === 'Furniture') {
-                document.getElementById('furniture-attributes').style.display = 'block';
-            }
+        if (type === 'Book') {
+            document.getElementById('book-attributes').style.display = 'block';
+        } else if (type === 'DVD') {
+            document.getElementById('dvd-attributes').style.display = 'block';
+        } else if (type === 'Furniture') {
+            document.getElementById('furniture-attributes').style.display = 'flex';
         }
-    </script>
+    }
+    document.addEventListener('DOMContentLoaded', showAttributes);
+</script>
 </body>
 </html>

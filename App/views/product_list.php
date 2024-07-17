@@ -7,7 +7,7 @@
             </div>
         </div>
         <form class="product-list__form" id="product-list" method="POST">
-        <button class="product-list__button product-list__button--delete" type="submit">Mass Delete</button>
+            <button class="product-list__" type="submit">Mass Delete</button>
             <?php if (isset($products) && count($products) > 0): ?>
                 <?php foreach ($products as $product): ?>
                     <div class="product-list__item">

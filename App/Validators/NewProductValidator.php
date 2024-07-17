@@ -6,48 +6,65 @@ class NewProductValidator {
 
     public function validateData(array $data): array
     {
-        if(empty($data['sku']) || !is_string($data['sku'])) {
-            throw new \InvalidArgumentException('Invalid SKU');
+        $errors = [];
+
+        // Validate SKU
+        if (empty($data['sku']) || !is_string($data['sku'])) {
+            $errors['sku'] = "Please provide a valid SKU.";
         }
 
-        if(empty($data['name']) || !is_string($data['name'])) {
-            throw new \InvalidArgumentException('Invalid Name');
+        // Validate Name
+        if (empty($data['name']) || !is_string($data['name'])) {
+            $errors['name'] = "Please provide a valid name.";
         }
 
-        if(!isset($data['price']) || !is_numeric($data['price']) || $data['price'] <= 0) {
-            throw new \InvalidArgumentException('Invalid price');
+        // Validate Price
+        if (!isset($data['price']) || !is_numeric($data['price']) || $data['price'] <= 0) {
+            $errors['price'] = "Please provide a valid price. It can't be less than or equal to 0.";
         }
 
-        if(!isset($data['type'])) {
-            throw new \InvalidArgumentException('Invalid type');
+        // Validate Type
+        if (!isset($data['type'])) {
+            $errors['type'] = "Please choose a type.";
         }
 
+        // Type-specific validation
         switch (strtolower($data['type'])) {
             case 'book':
                 if (!isset($data['weight']) || !is_numeric($data['weight']) || $data['weight'] <= 0) {
-                    throw new \InvalidArgumentException('Invalid weight for book');
+                    $errors['weight'] = "Please provide a valid weight for the book.";
                 }
                 break;
             case 'dvd':
                 if (!isset($data['size']) || !is_numeric($data['size']) || $data['size'] <= 0) {
-                    throw new \InvalidArgumentException('Invalid size for DVD');
+                    $errors['size'] = "Invalid size for DVD. It must be greater than 0.";
                 }
                 break;
             case 'furniture':
-                if (
-                    !isset($data['height']) || !is_numeric($data['height']) || $data['height'] <= 0 ||
-                    !isset($data['width'])  || !is_numeric($data['width'])  || $data['width'] <= 0 ||
-                    !isset($data['length']) || !is_numeric($data['length']) || $data['length'] <= 0
-                ) {
-                    throw new \InvalidArgumentException('Invalid dimensions for furniture');
+                if (!isset($data['height']) || !is_numeric($data['height']) || $data['height'] <= 0) {
+                    $errors['height'] = "Please provide a valid height for furniture.";
+                }
+                if (!isset($data['width']) || !is_numeric($data['width']) || $data['width'] <= 0) {
+                    $errors['width'] = "Please provide a valid width for furniture.";
+                }
+                if (!isset($data['length']) || !is_numeric($data['length']) || $data['length'] <= 0) {
+                    $errors['length'] = "Please provide a valid length for furniture.";
                 }
                 break;
             default:
-                throw new \InvalidArgumentException('Unsupported product type');
+                $errors['type'] = 'Unsupported product type.';
+                break;
         }
 
+        // Check if there are any errors
+        if (count($errors) > 0) {
+            throw new \InvalidArgumentException(json_encode($errors));
+        }
+
+        // Sanitize data to prevent XSS
         $data['sku']    = htmlspecialchars($data['sku']);
         $data['name']   = htmlspecialchars($data['name']);
+        $data['price']  = htmlspecialchars($data['price']);  // Ensure the price is also sanitized
 
         return $data;
     }

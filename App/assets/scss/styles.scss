@@ -16,17 +16,6 @@ body {
         }
     }
 
-    &__buttons {
-        display: flex;
-        gap: 30px;
-        margin-right: 1rem;
-    }
-
-    &__buttons > * {
-        padding: 10px 20px;
-        font-weight: 500;
-    }
-
     &__form {
         display: grid;
         grid-template-columns: repeat(4,1fr);
@@ -48,3 +37,36 @@ body {
         font-weight: 600;
     }
 }
+
+.container {
+    margin: 2rem;
+}
+
+.form {
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__group  {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+
+        &--switcher {
+            display: flex;
+            gap: 3rem;
+        }
+
+        &--hidden {
+            flex-direction: column;
+            width: 20%;
+        }
+    }
+}
+
