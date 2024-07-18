@@ -5,6 +5,9 @@ body {
 .product-list {
   padding: 50px;
 }
+.product-list .container {
+  margin: 2rem;
+}
 .product-list__header {
   display: flex;
   justify-content: space-between;
@@ -31,29 +34,43 @@ body {
   font-weight: 600;
 }
 
-.container {
-  margin: 2rem;
-}
-
 .form {
   display: flex;
   flex-direction: column;
-  gap: 40px;
 }
 .form__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 3rem 2rem 0;
+}
+.form__title {
+  margin: initial;
+}
+.form__wrapper {
+  margin-inline: 2rem;
+  padding: 5rem 1.2rem 30rem;
+  border-block: 2px solid #000;
+  font-weight: bold;
 }
 .form__group {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  padding-bottom: 2rem;
 }
 .form__group--switcher {
   display: flex;
   gap: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
 .form__group--hidden {
   flex-direction: column;
-  width: 20%;
+  width: fit-content;
+  padding: 2rem;
+  border: 2px solid #000;
+}
+.form__item {
+  display: flex;
+  gap: 40px;
 }

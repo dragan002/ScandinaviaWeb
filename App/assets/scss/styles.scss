@@ -4,6 +4,10 @@ body {
 
 .product-list {
 
+    .container {
+        margin: 2rem;
+    }
+
     padding: 50px;
 
     &__header {
@@ -38,35 +42,54 @@ body {
     }
 }
 
-.container {
-    margin: 2rem;
+.containerAddProduct {
+
 }
 
 .form {
-
     display: flex;
     flex-direction: column;
-    gap: 40px;
 
     &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 3rem 2rem 0;
+    }
+
+    &__title {
+        margin: initial;
+    }
+
+    &__wrapper {
+        margin-inline: 2rem;
+        padding: 5rem 1.2rem 30rem;
+        border-block: 2px solid #000;
+        font-weight: bold;
     }
 
     &__group  {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
+        padding-bottom: 2rem;
 
         &--switcher {
             display: flex;
             gap: 3rem;
+            padding-top: 2rem;
+            padding-bottom: 4rem;
         }
 
         &--hidden {
             flex-direction: column;
-            width: 20%;
+            width: fit-content;
+            padding: 2rem;
+            border: 2px solid #000;
         }
+    }
+    &__item {
+        display: flex;
+        gap: 40px;
     }
 }
 
