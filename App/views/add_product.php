@@ -55,8 +55,10 @@
                 </div>
     
                 <div class="form__group form__group--hidden" id="Book">
-                    <label for="weight" class="form__label">Weight (Kg):</label>
-                    <input type="number" id="weight" name="weight" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['weight'] ?? '') ?>">
+                    <div class="form__item">
+                        <label for="weight" class="form__label">Weight (Kg):</label>
+                        <input type="number" id="weight" name="weight" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['weight'] ?? '') ?>">
+                    </div>
                     <p class="form__description">Please enter the Width</p>
                     <?php if (isset($errors['weight'])): ?>
                         <div class="form__error"><?= htmlspecialchars($errors['weight']) ?></div>
@@ -64,8 +66,10 @@
                 </div>
     
                 <div class="form__group form__group--hidden" id="DVD">
-                    <label for="size" class="form__label">Size (MB):</label>
-                    <input type="number" id="size" name="size" class="form__input" value="<?= htmlspecialchars($_POST['size'] ?? '') ?>">
+                    <div class="form__item">
+                        <label for="size" class="form__label">Size (MB):</label>
+                        <input type="number" id="size" name="size" class="form__input" value="<?= htmlspecialchars($_POST['size'] ?? '') ?>">
+                    </div>
                     <p class="form__description">Please enter the size of the DVD in megabytes (MB).</p>
                     <?php if (isset($errors['size'])): ?>
                         <div class="form__error"><?= htmlspecialchars($errors['size']) ?></div>

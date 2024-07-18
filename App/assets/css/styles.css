@@ -55,7 +55,7 @@ body {
 }
 .form__group {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 100px 200px;
   padding-bottom: 2rem;
 }
 .form__group--switcher {
@@ -71,6 +71,8 @@ body {
   border: 2px solid #000;
 }
 .form__item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
   gap: 40px;
+  padding-bottom: 30px;
 }

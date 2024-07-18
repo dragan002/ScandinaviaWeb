@@ -70,7 +70,7 @@ body {
 
     &__group  {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: 100px 200px;
         padding-bottom: 2rem;
 
         &--switcher {
@@ -88,8 +88,10 @@ body {
         }
     }
     &__item {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
         gap: 40px;
+        padding-bottom: 30px;
     }
 }
 
