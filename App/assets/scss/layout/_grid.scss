@@ -1,0 +1,36 @@
+/*
+    <div class="content-block has-background">
+        <div class="wrapper">
+        </div>
+    </div>
+*/
+.content-block {
+	margin-top: $spacing-unit;
+
+	@include breakpoint(mobile) {
+		margin-top: $spacing-unit * 4;
+	}
+	@include breakpoint(desktop) {
+		margin-top: $spacing-unit * 6;
+	}
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&.has-background {
+		padding: $spacing-unit 0;
+
+		@include breakpoint(mobile) {
+			padding: $spacing-unit * 4 0;
+		}
+
+		@include breakpoint(desktop) {
+			padding: $spacing-unit * 6 0;
+		}
+
+		+ .has-background {
+			margin-top: 0;
+		}
+	}
+}

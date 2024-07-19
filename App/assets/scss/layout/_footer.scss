@@ -1,0 +1,9 @@
+.footer {
+	width: 100%;
+	padding: 50px 0;
+
+	&--site {
+		color: #ffffff;
+		background: getColor(primary);
+	}
+}
