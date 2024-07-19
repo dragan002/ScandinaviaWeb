@@ -15,31 +15,31 @@
                     <button class="form__button form__button--cancel col-start-12"><a href="../../public/index.php">Cancel</a></button>
             </div>
             <div class="form__wrapper">
-                <div class="form__group" id="product_form-sku">
-                    <label for="sku" class="form__label">SKU</label>
-                    <input type="text" id="sku" name="sku" class="form__input" value="<?= htmlspecialchars($_POST['sku'] ?? '') ?>">
+                <div class="form__group grid" id="product_form-sku">
+                    <label for="sku" class="form__label col-start-1">SKU</label>
+                    <input type="text" id="sku" name="sku" class="form__input col-start-2" value="<?= htmlspecialchars($_POST['sku'] ?? '') ?>">
                     <?php if (isset($errors['sku'])): ?>
                         <div class="form__error"><?= htmlspecialchars($errors['sku']) ?></div>
                     <?php endif; ?>
                 </div>
     
-                <div class="form__group">
-                    <label for="name" class="form__label">Name</label>
-                    <input type="text" id="name" name="name" class="form__input" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
+                <div class="form__group grid">
+                    <label for="name" class="form__label col-start-1">Name</label>
+                    <input type="text" id="name" name="name" class="form__input col-start-2" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
                     <?php if (isset($errors['name'])): ?>
                         <div class="form__error"><?= htmlspecialchars($errors['name']) ?></div>
                     <?php endif; ?>
                 </div>
     
-                <div class="form__group">
-                    <label for="price" class="form__label">Price ($)</label>
-                    <input type="number" id="price" name="price" class="form__input" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>">
+                <div class="form__group grid">
+                    <label for="price" class="form__label col-start-1">Price ($)</label>
+                    <input type="number" id="price" name="price" class="form__input col-start-2" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>">
                     <?php if (isset($errors['price'])): ?>
                         <div class="form__error"><?= htmlspecialchars($errors['price']) ?></div>
                     <?php endif; ?>
                 </div>
     
-                <div class="form__group--switcher">
+                <div class="form__group--switcher mb-12">
                     <label for="type" class="form__label">Type Switcher</label>
                     <select id="productType" name="type" class="form__select" required onchange="showAttributes()">
                         <option value="">Type Switcher</option>
@@ -53,9 +53,9 @@
                 </div>
     
                 <div class="form__group form__group--hidden" id="Book">
-                    <div class="form__item">
-                        <label for="weight" class="form__label">Weight (Kg):</label>
-                        <input type="number" id="weight" name="weight" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['weight'] ?? '') ?>">
+                    <div class="form__item grid">
+                        <label for="weight" class="form__label col-start-1">Weight (Kg):</label>
+                        <input type="number" id="weight" name="weight" class="form__input col-start-2" step="0.01" value="<?= htmlspecialchars($_POST['weight'] ?? '') ?>">
                     </div>
                     <p class="form__description">Please enter the Width</p>
                     <?php if (isset($errors['weight'])): ?>
@@ -64,9 +64,9 @@
                 </div>
     
                 <div class="form__group form__group--hidden" id="DVD">
-                    <div class="form__item">
-                        <label for="size" class="form__label">Size (MB):</label>
-                        <input type="number" id="size" name="size" class="form__input" value="<?= htmlspecialchars($_POST['size'] ?? '') ?>">
+                    <div class="form__item grid">
+                        <label for="size" class="form__label col-start-1">Size (MB):</label>
+                        <input type="number" id="size" name="size" class="form__input col-start-2" value="<?= htmlspecialchars($_POST['size'] ?? '') ?>">
                     </div>
                     <p class="form__description">Please enter the size of the DVD in megabytes (MB).</p>
                     <?php if (isset($errors['size'])): ?>
@@ -74,18 +74,18 @@
                     <?php endif; ?>
                 </div>
     
-                <div class="form__group form__group--hidden" id="Furniture">
-                    <div class="form__item">
-                        <label for="height" class="form__label">Height (CM):</label>
-                        <input type="number" id="height" name="height" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['height'] ?? '') ?>">
+                <div class="form__group form__group--hidden grid" id="Furniture">
+                    <div class="form__item col-start-1 grid">
+                        <label for="height" class="form__label col-start-1">Height (CM)</label>
+                        <input type="number" id="height" name="height" class="form__input col-start-2" step="0.01" value="<?= htmlspecialchars($_POST['height'] ?? '') ?>">
                     </div>
-                    <div class="form__item">
-                        <label for="width" class="form__label">Width (CM):</label>
-                        <input type="number" id="width" name="width" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['width'] ?? '') ?>">
+                    <div class="form__item col-start-1 grid">
+                        <label for="width" class="form__label col-start-1 pr-1">Width (CM)</label>
+                        <input type="number" id="width" name="width" class="form__input col-start-2" step="0.01" value="<?= htmlspecialchars($_POST['width'] ?? '') ?>">
                     </div>
-                    <div class="form__item">
-                        <label for="length" class="form__label">Length (CM):</label>
-                        <input type="number" id="length" name="length" class="form__input" step="0.01" value="<?= htmlspecialchars($_POST['length'] ?? '') ?>">
+                    <div class="form__item col-start-1 grid">
+                        <label for="length" class="form__label col-start-1">Length (CM)</label>
+                        <input type="number" id="length" name="length" class="form__input col-start-2" step="0.01" value="<?= htmlspecialchars($_POST['length'] ?? '') ?>">
                     </div>
                     <p class="form__description">Please enter dimensions: Height x Width x Length</p>
                     <?php if (isset($errors['dimensions'])): ?>
@@ -109,7 +109,7 @@
         } else if (type === 'DVD') {
             document.getElementById('DVD').style.display = 'block';
         } else if (type === 'Furniture') {
-            document.getElementById('Furniture').style.display = 'flex';
+            document.getElementById('Furniture').style.display = 'grid';
         }
     }
     document.addEventListener('DOMContentLoaded', showAttributes);

@@ -12,9 +12,9 @@ require_once '../Config/Database.php';
 require_once '../vendor/autoload.php';
 
 use Database;
+use App\Repositories\ProductRepository;
 use App\Services\ProductService;
 use App\Controllers\ProductController;
-use App\Repositories\ProductRepository;
 
 $pdo                = Database::getInstance()->getConnection();
 $productRepository  = new ProductRepository($pdo);

@@ -2828,6 +2828,32 @@ a img.aligncenter {
 }
 
 /* @import 'block-name'; */
+.form__wrapper {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-block: 2px solid #000;
+}
+.form__group {
+  padding-bottom: 2.3rem;
+}
+.form__group--switcher .form__label {
+  margin-right: 2rem;
+}
+.form__group--hidden {
+  border: 2px solid #000;
+  padding: 3rem;
+  width: min-content;
+}
+.form__label {
+  width: max-content;
+}
+.form__item {
+  margin-bottom: 2rem;
+}
+.form__description {
+  width: fit-content;
+}
+
 .c-button {
   display: inline-block;
   margin-bottom: 0;
