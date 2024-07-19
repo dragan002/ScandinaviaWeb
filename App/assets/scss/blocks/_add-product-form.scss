@@ -1,13 +1,12 @@
 .form {
 
     &__wrapper {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        border-block: 2px solid #000;
-    }
+        border-block: 2px solid #000; /* Basic solid border */
+        border-radius: 8px; /* Rounded corners for a smoother look */
+        background-color: #fff; /* Optional: a contrasting background to the border */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);     }
 
     &__group {
-        padding-bottom: 2.3rem;
 
         &--switcher .form__label {
             margin-right: 2rem;
@@ -15,20 +14,20 @@
     }
 
     &__group--hidden {
+        max-width: 510px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: box-shadow 0.3s ease-in-out;
+
+        &:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    &__group--hidden-item {
         border: 2px solid #000;
-        padding: 3rem;
-        width: min-content;
     }
 
     &__label {
-        width: max-content;
-    }
-
-    &__item {
-        margin-bottom: 2rem;
-    }
-
-    &__description {
-        width: fit-content;
+        width: 7rem;
     }
 }

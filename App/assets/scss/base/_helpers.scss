@@ -184,3 +184,42 @@
         }
     }
 }
+
+@each $breakpoint, $value in $breakpoints {
+    @for $i from 0 through 13 {
+        // Responsive padding all sides
+        @include breakpoint($breakpoint) {
+            .#{$breakpoint}-p-#{$i} {
+                padding: $spacing-unit * $i;
+            }
+        }
+
+        // Responsive padding top
+        @include breakpoint($breakpoint) {
+            .#{$breakpoint}-pt-#{$i} {
+                padding-top: $spacing-unit * $i;
+            }
+        }
+
+        // Responsive padding bottom
+        @include breakpoint($breakpoint) {
+            .#{$breakpoint}-pb-#{$i} {
+                padding-bottom: $spacing-unit * $i;
+            }
+        }
+
+        // Responsive padding left
+        @include breakpoint($breakpoint) {
+            .#{$breakpoint}-pl-#{$i} {
+                padding-left: $spacing-unit * $i;
+            }
+        }
+
+        // Responsive padding right
+        @include breakpoint($breakpoint) {
+            .#{$breakpoint}-pr-#{$i} {
+                padding-right: $spacing-unit * $i;
+            }
+        }
+    }
+}
