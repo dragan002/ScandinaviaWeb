@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="../assets/css/styles.css"> 
 </head>
 <body>
-    <div class="containerAddProduct">
+    <div class="containerAddProduct wrapper">
         <form action="../../public/add_product.php" method="POST" class="form" id="product_form">
-            <div class="form__header">
-                <h1 class="form__title">Product Add</h1>
-                <div>
-                    <button type="submit" class="form__button form__button--submit">Add Product</button>
-                    <button class="form__button form__button--cancel"><a href="../../public/index.php">Cancel</a></button>
-                </div>
+            <div class="form__header grid mt-10">
+                    <h1 class="form__title mb-0 h2 col-span-3 ">Product Add</h1>
+                    <button type="submit" class="form__button form__button--submit col-start-11">Save</button>
+                    <button class="form__button form__button--cancel col-start-12"><a href="../../public/index.php">Cancel</a></button>
             </div>
             <div class="form__wrapper">
                 <div class="form__group" id="product_form-sku">

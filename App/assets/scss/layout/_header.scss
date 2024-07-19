@@ -1,0 +1,14 @@
+.header {
+	&--site {
+		position: relative;
+		background: getColor(brand);
+		color: #000000;
+		width: 100%;
+		z-index: 9999;
+	}
+
+	.logo {
+		display: block;
+		width: 200px;
+	}
+}
