@@ -4438,9 +4438,9 @@ h6,
 
 /* @import 'block-name'; */
 .form__wrapper {
-  border-block: 2px solid #000; /* Basic solid border */
-  border-radius: 8px; /* Rounded corners for a smoother look */
-  background-color: #fff; /* Optional: a contrasting background to the border */
+  border-block: 2px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .form__group--switcher .form__label {
@@ -4459,4 +4459,46 @@ h6,
 }
 .form__label {
   width: 7rem;
+}
+
+.group__form {
+  position: relative;
+  font-family: monospace;
+}
+
+button {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 4px solid #4d4747;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 5px 5px 0 #4a4848;
+}
+
+input {
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #4d4747;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 1px 1px 0 #4a4848;
+}
+
+select {
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #4d4747;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 1px 1px 0 #4a4848;
 }

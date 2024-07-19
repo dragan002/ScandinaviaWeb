@@ -10,11 +10,11 @@
     <div class="containerAddProduct wrapper">
         <form action="../../public/add_product.php" method="POST" class="form" id="product_form">
             <div class="form__header grid mt-10 mb-1">
-                    <h1 class="form__title mb-0 h2 col-span-10 ">Product Add</h1>
-                    <button type="submit" class="form__button form__button--submit col-start-11">Save</button>
-                    <button class="form__button form__button--cancel col-start-12"><a href="../../public/index.php">Cancel</a></button>
+                    <h1 class="form__title mb-0 h3 col-span-6 ">Product Add</h1>
+                    <button type="submit" class="form__button form__button--submit col-span-3 md-col-span-2 lg-col-start-11">Save</button>
+                    <button class="form__button form__button--cancel col-span-3 md-col-span-2 lg-col-start-12"><a href="../../public/index.php">Cancel</a></button>
             </div>
-            <div class="form__wrapper grid p-6">
+            <div class="form__wrapper grid pt-4 pb-4 xs-p-2 sm-p-4 md-p-5 lg-p-6">
                 <div class="form__group grid sm-pb-2" id="product_form-sku">
                     <label for="sku" class="form__label col-start-1">SKU</label>
                     <input type="text" id="sku" name="sku" class="form__input col-start-2" value="<?= htmlspecialchars($_POST['sku'] ?? '') ?>">
