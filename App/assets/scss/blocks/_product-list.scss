@@ -1,5 +1,5 @@
 .product-list {
-
+    position: relative;
 
     &__items {
         border-block: 2px solid #000;
@@ -7,9 +7,30 @@
 
     &__item {
         border: 2px solid #000;
+        border-radius: 4px;
 
         & > :not(input) {
             text-align: center;
+        }
+    }
+
+    &__button {
+        @media (min-width: map-get($breakpoints, xl)) {
+            width: fit-content;
+            padding: 7px 12px;
+            position: absolute;
+        }
+
+        &-add {
+            @media (min-width: map-get($breakpoints, xl)) {
+                right: 160px;
+            }
+        }
+
+        &-delete {
+            @media (min-width: map-get($breakpoints, xl)) {
+                right: 22px;
+            }
         }
     }
 }

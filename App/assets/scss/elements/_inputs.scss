@@ -1,10 +1,31 @@
-.c-input {
-    font-weight: bold;
-    color: #000;
-    background-color: #fff;
-    border: 2px solid #4d4747;
-    border-radius: 0;
+.product-list__delete-checkbox {
+    appearance: none; 
+    -webkit-appearance: none; 
+    position: relative;
+    width: 20px;
+    height: 20px; 
     outline: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 1px 1px 0 #4a4848;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #f0f0f0; 
+    border: 2px solid #ddd; 
+    border-radius: 4px; 
+    margin-right: 10px; 
+}
+
+.product-list__delete-checkbox:checked {
+    background-color: #4CAF50; 
+}
+
+.product-list__delete-checkbox:checked:before {
+    content: '';
+    position: absolute;
+    left: 3px; 
+    top: 0px; 
+    width: 6px; 
+    height: 10px; 
+    border: solid white; 
+    border-width: 0 3px 3px 0; 
+    transform: rotate(45deg); 
 }

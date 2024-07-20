@@ -43,7 +43,7 @@ class ProductController
             $skusToDelete = $_POST['deleteSku'];
             if (!empty($skusToDelete)) {
                 $this->productService->deleteProducts($skusToDelete);
-                header('Location: index.php?status=success');
+                header('Location: index.php?');
                 exit;
             } else {
                 header('Location: index.php?status=noselection');
