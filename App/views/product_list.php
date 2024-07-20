@@ -1,26 +1,24 @@
 <body>
-    <div class="product-list">
-        <div class="product-list__header">
-            <h1 class="product-list__title">Product List</h1>
-            <div class="product-list__buttons">
-                <button class="product-list__button product-list__button--add"><a href="../App/views/add_product.php">ADD</a></button>
+    <div class="product-list wrapper">
+        <form class="product-list__form mt-3 grid" id="product-list" method="POST">
+            <h3 class="product-list__title mb-0 col-span-6">Product List</h3>
+            <button class="product-list__button product-list__button--add p-small c-button--primary col-span-3"><a href="../App/views/add_product.php">ADD</a></button>
+            <button class="product-list__button c-button--primary p-small col-span-3" type="submit">Mass Delete</button>
+            <div class="product-list__items pt-2 pb-2 grid">
+                <?php if (isset($products) && count($products) > 0): ?>
+                    <?php foreach ($products as $product): ?>
+                        <div class="product-list__item p-1 col-span-12 xs-col-span-6 md-col-span-4 lg-col-span-3">
+                            <input type="checkbox" name="deleteSku[]"    value="<?= $product->getSku() ?>" class="product-list__delete-checkbox">
+                            <p class="product-list__sku mb-0">                       <?= $product->getSku() ?></p>
+                            <p class="product-list__name mb-0">                      <?= $product->getName() ?></p>
+                            <p class="product-list__price mb-0">$                    <?= $product->getPrice() ?></p>
+                            <p class="product-list__attribute mb-0">                 <?= $product->getAttribute() ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="product-list__no-products">No products found.</p>
+                <?php endif; ?>
             </div>
-        </div>
-        <form class="product-list__form" id="product-list" method="POST">
-            <button class="product-list__" type="submit">Mass Delete</button>
-            <?php if (isset($products) && count($products) > 0): ?>
-                <?php foreach ($products as $product): ?>
-                    <div class="product-list__item">
-                        <input type="checkbox" name="deleteSku[]"    value="<?= $product->getSku() ?>" class="product-list__delete-checkbox">
-                        <p class="product-list__sku">                       <?= $product->getSku() ?></p>
-                        <p class="product-list__name">                      <?= $product->getName() ?></p>
-                        <p class="product-list__price">$                    <?= $product->getPrice() ?></p>
-                        <p class="product-list__attribute">                 <?= $product->getAttribute() ?></p>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p class="product-list__no-products">No products found.</p>
-            <?php endif; ?>
         </form>
     </div>
 </body>

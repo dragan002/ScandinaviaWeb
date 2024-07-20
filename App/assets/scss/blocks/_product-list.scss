@@ -1,0 +1,15 @@
+.product-list {
+
+
+    &__items {
+        border-block: 2px solid #000;
+    }
+
+    &__item {
+        border: 2px solid #000;
+
+        & > :not(input) {
+            text-align: center;
+        }
+    }
+}

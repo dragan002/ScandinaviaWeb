@@ -1,0 +1,11 @@
+.c-select {
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #4d4747;
+    border-radius: 0;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 1px 1px 0 #4a4848;
+    cursor: pointer;
+  }
