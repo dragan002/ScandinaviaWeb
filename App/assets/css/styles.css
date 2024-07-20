@@ -4592,6 +4592,7 @@ h6,
 }
 
 .product-list {
+  font-family: monospace;
   position: relative;
 }
 .product-list__items {

@@ -56,15 +56,13 @@ class NewProductValidator {
                 break;
         }
 
-        // Check if there are any errors
         if (count($errors) > 0) {
             throw new \InvalidArgumentException(json_encode($errors));
         }
-
-        // Sanitize data to prevent XSS
+        
         $data['sku']    = htmlspecialchars($data['sku']);
         $data['name']   = htmlspecialchars($data['name']);
-        $data['price']  = htmlspecialchars($data['price']);  // Ensure the price is also sanitized
+        $data['price']  = htmlspecialchars($data['price']);  
 
         return $data;
     }

@@ -14,6 +14,10 @@ $productRepository   = new ProductRepository($pdo);
 $productService      = new ProductService($productRepository);
 $productController   = new ProductController($productService);
 
+
+$errors = [];  // Ensure errors are always initialized
+$data = $_POST;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // Sanitize $_POST data using more secure methods
@@ -51,11 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $validatedData  = $validator->validateData($data); 
 
         $productController->addProduct($validatedData);
-
         header('Location: index.php'); 
         exit;
     } catch (Exception $e) {
-        echo "Error during adding product: " . $e->getMessage();
+        echo "Error during adding produccct: " . $e->getMessage();        
     }
 }
 
