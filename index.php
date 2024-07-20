@@ -8,8 +8,8 @@
 </head>
 
 <?php
-require_once '../Config/Database.php';
-require_once '../vendor/autoload.php';
+require_once 'Config/Database.php';
+require_once 'vendor/autoload.php';
 
 use Database;
 use App\Repositories\ProductRepository;
