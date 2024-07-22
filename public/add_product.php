@@ -14,12 +14,11 @@ $productService      = new ProductService($productRepository);
 $productController   = new ProductController($productService);
 
 
-$errors = [];  // Ensure errors are always initialized
+$errors = [];  
 $data = $_POST;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        // Sanitize $_POST data using more secure methods
         $data = filter_input_array(INPUT_POST, [
             'sku'    => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             'name'   => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
@@ -52,12 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $validator      = new NewProductValidator();
         $validatedData  = $validator->validateData($data); 
-
         $productController->addProduct($validatedData);
-        header('Location: ../index.php'); 
-        exit;
     } catch (Exception $e) {
-        echo "Error during adding produccct: " . $e->getMessage();        
+        echo "Error during adding product: " . $e->getMessage();        
     }
 }
 

@@ -33,6 +33,6 @@ class ProductService
 
     public function deleteProducts(array $sku): bool
     {
-        return $this->productRepository->deleteProductBySku($sku);
+        return $this->productRepository->deleteProductsBySkus($sku);
     }
 }

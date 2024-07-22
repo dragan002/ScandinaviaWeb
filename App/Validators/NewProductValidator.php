@@ -2,6 +2,7 @@
 
 namespace App\Validators;
 
+
 class NewProductValidator {
 
     public function validateData(array $data): array

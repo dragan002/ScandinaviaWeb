@@ -8,7 +8,6 @@ use App\Models\Book;
 use App\Models\Product;
 use App\Models\Furniture;
 use App\Factories\ProductFactory;
-use Exception;
 use PDOException;
 
 class ProductRepository 
@@ -65,20 +64,20 @@ class ProductRepository
             return true;
         } catch (PDOException $e) {
             $this->pdo->rollBack();
-            // Consider logging this error or handling it more robustly
             return false;
         }
     }
 
-    public function deleteProductBySku($skus): bool 
+    public function deleteProductsBySkus(array $skus): bool
     {
         try {
             $placeholders = implode(', ', array_fill(0, count($skus), '?'));
-            $stmt = $this->pdo->prepare("DELETE FROM products WHERE sku IN ($placeholders)");
+            $sql = "DELETE FROM products WHERE sku IN ($placeholders)";
+            $stmt = $this->pdo->prepare($sql);
             $stmt->execute($skus);
-            return true;
-        } catch(\Exception $e) {
-            throw new Exception("Something went wrong with executing:" . $e->getMessage());
+            return $stmt->rowCount() > 0; 
+        } catch (\Exception $e) {
+            throw new \Exception("Failed to delete products: " . $e->getMessage());
         }
     }
 }

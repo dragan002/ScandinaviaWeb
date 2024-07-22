@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Services\ProductService;
 
+
 class ProductController 
 {
     public $products;
@@ -32,7 +33,7 @@ class ProductController
             
             $product = $this->productService->addProduct($data);
                         
-            header('Location: index.php');
+            header('Location: ../../index.php');
         } catch(\Exception $e) {
             echo "Error during adding product: " . $e->getMessage();
         }
@@ -43,12 +44,7 @@ class ProductController
             $skusToDelete = $_POST['deleteSku'];
             if (!empty($skusToDelete)) {
                 $this->productService->deleteProducts($skusToDelete);
-                header('Location: index.php?');
-                exit;
-            } else {
-                header('Location: index.php?status=noselection');
-                exit;
-            }
+            } 
         }
     }
 }
