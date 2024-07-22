@@ -29,12 +29,11 @@ class ProductController
 
     public function addProduct(array $data) {
         try {
-            $data = $_POST;
-            
             $product = $this->productService->addProduct($data);
-                        
+
             header('Location: ../../index.php');
         } catch(\Exception $e) {
+ 
             echo "Error during adding product: " . $e->getMessage();
         }
     }

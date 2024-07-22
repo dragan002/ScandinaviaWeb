@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$errors = $_SESSION['form_errors'] ?? null;
+unset($_SESSION['form_errors']); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +26,11 @@
                     <label for="sku" class="form__label col-start-1">SKU</label>
                     <input type="text" id="sku" name="sku" class="form__input col-start-2 c-input" value="<?= htmlspecialchars($_POST['sku'] ?? '') ?>">
                     <?php if (isset($errors['sku'])): ?>
-                        <div class="form__error"><?= htmlspecialchars($errors['sku']) ?></div>
+                        <div class="form__error">
+                            <p>
+                                <?= htmlspecialchars($errors['sku']) ?>
+                            </p>
+                        </div>
                     <?php endif; ?>
                 </div>
     
@@ -35,7 +46,9 @@
                     <label for="price" class="form__label col-start-1">Price ($)</label>
                     <input type="number" id="price" name="price" class="form__input col-start-2 c-input" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>">
                     <?php if (isset($errors['price'])): ?>
-                        <div class="form__error"><?= htmlspecialchars($errors['price']) ?></div>
+                        <div class="form__error">
+                            <p><?= htmlspecialchars($errors['price']) ?></p>
+                    </div>
                     <?php endif; ?>
                 </div>
     

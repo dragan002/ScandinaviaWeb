@@ -1,5 +1,6 @@
 <?php
 
+
 require_once '../Config/Database.php';
 require_once '../vendor/autoload.php';
 
@@ -14,9 +15,6 @@ $productRepository   = new ProductRepository($pdo);
 $productService      = new ProductService($productRepository);
 $productController   = new ProductController($productService);
 
-
-$errors = [];  
-$data = $_POST;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -52,9 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $validator      = new NewProductValidator();
         $validatedData  = $validator->validateData($data); 
-        $productController->addProduct($validatedData);
+        
+        if (!empty($validatedData)) {
+            $productController->addProduct($validatedData);
+        } 
+            header('Location: ../../App/views/add_product.php');
+
     } catch (Exception $e) {
-        echo "Error during adding product: " . $e->getMessage();        
+        echo $e->getMessage();
+        exit();    
     }
 }
 
