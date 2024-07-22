@@ -52,12 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $validator      = new NewProductValidator();
         $validatedData  = $validator->validateData($data); 
-
         $productController->addProduct($validatedData);
-        header('Location: ../index.php'); 
-        exit;
     } catch (Exception $e) {
-        echo "Error during adding produccct: " . $e->getMessage();        
+        echo "Error during adding product: " . $e->getMessage();        
     }
 }
 

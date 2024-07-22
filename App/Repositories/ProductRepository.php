@@ -64,7 +64,6 @@ class ProductRepository
             return true;
         } catch (PDOException $e) {
             $this->pdo->rollBack();
-            // Consider logging this error or handling it more robustly
             return false;
         }
     }

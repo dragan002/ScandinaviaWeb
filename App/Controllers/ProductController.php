@@ -33,7 +33,7 @@ class ProductController
             
             $product = $this->productService->addProduct($data);
                         
-            header('Location: index.php');
+            header('Location: ../../index.php');
         } catch(\Exception $e) {
             echo "Error during adding product: " . $e->getMessage();
         }
