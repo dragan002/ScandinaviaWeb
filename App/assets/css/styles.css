@@ -209,15 +209,15 @@ button:disabled:hover,
 }
 
 :root {
-  --color-grey-100: #f8f9fa;
+  --color-grey-100: #cfdbe7;
 }
 
 .color-grey-100 {
-  color: #f8f9fa;
+  color: #cfdbe7;
 }
 
 .background-grey-100 {
-  background-color: #f8f9fa;
+  background-color: #cfdbe7;
 }
 
 :root {

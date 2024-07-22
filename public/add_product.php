@@ -15,12 +15,11 @@ $productService      = new ProductService($productRepository);
 $productController   = new ProductController($productService);
 
 
-$errors = [];  // Ensure errors are always initialized
+$errors = [];  
 $data = $_POST;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        // Sanitize $_POST data using more secure methods
         $data = filter_input_array(INPUT_POST, [
             'sku'    => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             'name'   => FILTER_SANITIZE_FULL_SPECIAL_CHARS,

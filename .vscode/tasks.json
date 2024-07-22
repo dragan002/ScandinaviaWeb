@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "compile:sass",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: compile:sass",
+			"detail": "sass App/assets/scss/styles.scss App/assets/css/styles.css"
+		},
+		{
+			"type": "npm",
+			"script": "install",
+			"group": "clean",
+			"problemMatcher": [],
+			"label": "npm: install",
+			"detail": "install dependencies from package"
+		}
+	]
+}
