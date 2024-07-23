@@ -1,16 +1,16 @@
-const {src, dest, watch} = require('gulp');
+const { src, dest, watch } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 
-function css() {
+function compileSass() {
     return src('App/assets/scss/styles.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(dest('./App/assets/css/'));
+        .pipe(dest('App/assets/css/'));
 }
 
-exports.buildCss = css;
-
-exports.watch = function() {
-    watch('App/assets/scss/**/*.scss', css);
+function watchSass() {
+    watch('App/assets/scss/**/*.scss', compileSass);
 }
 
-exports.default = exports.watch;
+exports.compileSass = compileSass;
+exports.watch = watchSass;
+exports.default = watchSass;

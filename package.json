@@ -2,8 +2,9 @@
   "name": "scandiweb-test",
   "version": "1.0.0",
   "scripts": {
-    "compile:sass": "sass App/assets/scss/styles.scss App/assets/css/styles.css"
-  },
+    "compile:sass": "gulp compileSass",
+    "watch:sass": "gulp watch"
+},
   "devDependencies": {
     "gulp": "^5.0.0",
     "gulp-sass": "^5.1.0",

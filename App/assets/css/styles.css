@@ -160,7 +160,6 @@ button:disabled:hover,
         }
 */
 /* Used to retrieve SCSS Colors from _variables.scss */
-/* Placeholder Color */
 .fluid-padding--sm {
   padding: calc(15% - 10vw) 0;
 }
