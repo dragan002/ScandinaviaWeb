@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$errors = $_SESSION['form_errors'] ?? null;
+unset($_SESSION['form_errors']); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +19,18 @@
             <div class="form__header grid mt-10 mb-1">
                     <h1 class="form__title mb-0 h3 col-span-6 ">Product Add</h1>
                     <button type="submit" class="form__button form__button--submit col-span-3 md-col-span-2 lg-col-start-11 c-button--primary">Save</button>
-                    <button class="form__button form__button--cancel col-span-3 md-col-span-2 lg-col-start-12 c-button--primary"><a href="../../public/index.php">Cancel</a></button>
+                    <button class="form__button form__button--cancel col-span-3 md-col-span-2 lg-col-start-12 c-button--primary"><a href="../../../index.php">Cancel</a></button>
             </div>
             <div class="form__wrapper grid pt-4 pb-4 xs-p-2 sm-p-4 md-p-5 lg-p-6">
                 <div class="form__group grid sm-pb-2" id="product_form-sku">
                     <label for="sku" class="form__label col-start-1">SKU</label>
                     <input type="text" id="sku" name="sku" class="form__input col-start-2 c-input" value="<?= htmlspecialchars($_POST['sku'] ?? '') ?>">
                     <?php if (isset($errors['sku'])): ?>
-                        <div class="form__error"><?= htmlspecialchars($errors['sku']) ?></div>
+                        <div class="form__error">
+                            <p>
+                                <?= htmlspecialchars($errors['sku']) ?>
+                            </p>
+                        </div>
                     <?php endif; ?>
                 </div>
     
@@ -35,7 +46,9 @@
                     <label for="price" class="form__label col-start-1">Price ($)</label>
                     <input type="number" id="price" name="price" class="form__input col-start-2 c-input" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>">
                     <?php if (isset($errors['price'])): ?>
-                        <div class="form__error"><?= htmlspecialchars($errors['price']) ?></div>
+                        <div class="form__error">
+                            <p><?= htmlspecialchars($errors['price']) ?></p>
+                    </div>
                     <?php endif; ?>
                 </div>
     

@@ -2,6 +2,7 @@
 
 namespace App\Validators;
 
+session_start();
 
 class NewProductValidator {
 
@@ -58,7 +59,8 @@ class NewProductValidator {
         }
 
         if (count($errors) > 0) {
-            throw new \InvalidArgumentException(json_encode($errors));
+            $_SESSION['form_errors'] = $errors; 
+            return [];
         }
         
         $data['sku']    = htmlspecialchars($data['sku']);

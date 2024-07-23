@@ -25,9 +25,9 @@ class ProductService
         $validator = new NewProductValidator;
         
         $validatedData = $validator->validateData($data);
-        
-        $product = ProductFactory::create($validatedData);
-        
+
+        $product = ProductFactory::create($validatedData);  
+              
         $save = $this->productRepository->save($product);
     }
 
