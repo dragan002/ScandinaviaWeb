@@ -80,7 +80,7 @@ button:disabled:hover,
   background-color: inherit;
 }
 
-.product-list__delete-checkbox {
+.delete-checkbox {
   appearance: none;
   -webkit-appearance: none;
   position: relative;
@@ -96,11 +96,11 @@ button:disabled:hover,
   margin-right: 10px;
 }
 
-.product-list__delete-checkbox:checked {
+.delete-checkbox:checked {
   background-color: #4CAF50;
 }
 
-.product-list__delete-checkbox:checked:before {
+.delete-checkbox:checked:before {
   content: "";
   position: absolute;
   left: 3px;
@@ -4601,6 +4601,9 @@ h6,
 }
 .form__label {
   width: 7rem;
+}
+.form__description {
+  width: 54%;
 }
 
 .product-list {
