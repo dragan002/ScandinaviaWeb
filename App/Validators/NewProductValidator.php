@@ -10,27 +10,22 @@ class NewProductValidator {
     {
         $errors = [];
 
-        // Validate SKU
         if (empty($data['sku']) || !is_string($data['sku'])) {
             $errors['sku'] = "Please provide a valid SKU.";
         }
 
-        // Validate Name
         if (empty($data['name']) || !is_string($data['name'])) {
             $errors['name'] = "Please provide a valid name.";
         }
 
-        // Validate Price
         if (!isset($data['price']) || !is_numeric($data['price']) || $data['price'] <= 0) {
             $errors['price'] = "Please provide a valid price. It can't be less than or equal to 0.";
         }
 
-        // Validate Type
         if (!isset($data['type'])) {
             $errors['type'] = "Please choose a type.";
         }
 
-        // Type-specific validation
         switch (strtolower($data['type'])) {
             case 'book':
                 if (!isset($data['weight']) || !is_numeric($data['weight']) || $data['weight'] <= 0) {
@@ -42,17 +37,25 @@ class NewProductValidator {
                     $errors['size'] = "Invalid size for DVD. It must be greater than 0.";
                 }
                 break;
-            case 'furniture':
-                if (!isset($data['height']) || !is_numeric($data['height']) || $data['height'] <= 0) {
-                    $errors['height'] = "Please provide a valid height for furniture.";
-                }
-                if (!isset($data['width']) || !is_numeric($data['width']) || $data['width'] <= 0) {
-                    $errors['width'] = "Please provide a valid width for furniture.";
-                }
-                if (!isset($data['length']) || !is_numeric($data['length']) || $data['length'] <= 0) {
-                    $errors['length'] = "Please provide a valid length for furniture.";
-                }
-                break;
+                case 'furniture':
+                    if (!isset($data['height']) || !is_numeric($data['height'])) {
+                        $errors['height'] = "Please provide a valid height";
+                    } elseif ($data['height'] < 0) {
+                        $errors['height'] = "Height cannot be negative.";
+                    }
+                    
+                    if (!isset($data['width']) || !is_numeric($data['width'])) {
+                        $errors['width'] = "Please provide a valid width for furniture.";
+                    } elseif ($data['width'] < 0) {
+                        $errors['width'] = "Width cannot be negative.";
+                    }
+                    
+                    if (!isset($data['length']) || !is_numeric($data['length'])) {
+                        $errors['length'] = "Please provide a valid length";
+                    } elseif ($data['length'] < 0) {
+                        $errors['length'] = "Length cannot be negative.";
+                    }
+                    break;
             default:
                 $errors['type'] = 'Unsupported product type.';
                 break;

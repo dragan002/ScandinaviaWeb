@@ -92,19 +92,26 @@ unset($_SESSION['form_errors']);
                         <div class="form__item col-start-1 grid sm-pb-2">
                             <label for="height" class="form__label col-start-1">Height (CM)</label>
                             <input type="text" id="height" name="height" class="form__input col-start-2 c-input" step="0.01" value="<?= htmlspecialchars($_POST['height'] ?? '') ?>">
+                            <?php if (isset($errors['height'])): ?>
+                                <div class="form__error"><?= htmlspecialchars($errors['height']) ?></div>
+                            <?php endif; ?>
                         </div>
                         <div class="form__item col-start-1 grid sm-pb-2">
                             <label for="width" class="form__label col-start-1 pr-1">Width (CM)</label>
                             <input type="text" id="width" name="width" class="form__input col-start-2 c-input" step="0.01" value="<?= htmlspecialchars($_POST['width'] ?? '') ?>">
+                                <?php if (isset($errors['width'])): ?>
+                            <div class="form__error"><?= htmlspecialchars($errors['width']) ?></div>
+                        <?php endif; ?>
                         </div>
                         <div class="form__item col-start-1 grid sm-pb-2">
                             <label for="length" class="form__label col-start-1">Length (CM)</label>
                             <input type="text" id="length" name="length" class="form__input col-start-2 c-input" step="0.01" value="<?= htmlspecialchars($_POST['length'] ?? '') ?>">
+                            <?php if (isset($errors['length'])): ?>
+                                <div class="form__error"><?= htmlspecialchars($errors['length']) ?></div>
+                            <?php endif; ?>
                         </div>
                         <p class="form__description p-small">Please enter dimensions: Height x Width x Length</p>
-                        <?php if (isset($errors['dimensions'])): ?>
-                            <div class="form__error"><?= htmlspecialchars($errors['dimensions']) ?></div>
-                        <?php endif; ?>
+
                 </div>
                 </div>
             </div>

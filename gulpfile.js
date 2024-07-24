@@ -14,3 +14,5 @@ function watchSass() {
 exports.compileSass = compileSass;
 exports.watch = watchSass;
 exports.default = watchSass;
+
+exports.build = build;

@@ -16,48 +16,52 @@ $productController   = new ProductController($productService);
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        $data = filter_input_array(INPUT_POST, [
-            'sku'    => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-            'name'   => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-            'price'  => [
-                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
-                'flags'  => FILTER_FLAG_ALLOW_FRACTION
-            ],
-            'type'   => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-            'weight' => [
-                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
-                'flags'  => FILTER_FLAG_ALLOW_FRACTION
-            ],
-            'size'   => [
-                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
-                'flags'  => FILTER_FLAG_ALLOW_FRACTION
-            ],
-            'height' => [
-                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
-                'flags'  => FILTER_FLAG_ALLOW_FRACTION
-            ],
-            'width'  => [
-                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
-                'flags'  => FILTER_FLAG_ALLOW_FRACTION
-            ],
-            'length' => [
-                'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
-                'flags'  => FILTER_FLAG_ALLOW_FRACTION
-            ],
-        ]);
 
-        $validator      = new NewProductValidator();
-        $validatedData  = $validator->validateData($data); 
+$data = filter_input_array(INPUT_POST, [
+    'sku'    => FILTER_SANITIZE_STRING,
+    'name'   => FILTER_SANITIZE_STRING,
+    'price'  => [
+        'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+        'flags'  => FILTER_FLAG_ALLOW_FRACTION
+    ],
+    'type'   => FILTER_SANITIZE_STRING,
+    'weight' => [
+        'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+        'flags'  => FILTER_FLAG_ALLOW_FRACTION
+    ],
+    'size'   => [
+        'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+        'flags'  => FILTER_FLAG_ALLOW_FRACTION
+    ],
+    'height' => [
+        'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+        'flags'  => FILTER_FLAG_ALLOW_FRACTION
+    ],
+    'width'  => [
+        'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+        'flags'  => FILTER_FLAG_ALLOW_FRACTION
+    ],
+    'length' => [
+        'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
+        'flags'  => FILTER_FLAG_ALLOW_FRACTION
+    ],
+]);
+
         
+    try {
+        $validator = new NewProductValidator();
+        $validatedData = $validator->validateData($data);
+
         if (!empty($validatedData)) {
             $productController->addProduct($validatedData);
+            header('Location: ../../index.php'); 
+            exit;
         } 
-            header('Location: ../../App/views/add_product.php');
-
+        header('Location: ../App/views/add_product.php');
     } catch (Exception $e) {
-        echo $e->getMessage();
-        exit();    
+        $_SESSION['error_message'] = $e->getMessage();
+        $_SESSION['form_data'] = $data;
+        exit();
     }
 }
 
