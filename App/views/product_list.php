@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="product-list wrapper">
     <?php echo $notification; ?>
         <form class="product-list__form mt-10 mb-10 grid" id="product-list" method="POST" action="../index.php">
-            <h3 class="product-list__title mb-0 col-span-6 sm-col-span-8 lg-col-span-9">Product List</h3>
+            <h4 class="product-list__title h4 pt-1 mb-0 col-span-6 sm-col-span-8 lg-col-span-9">Product List</h4>
             <button class="product-list__button product-list__button-add p-small c-button--primary col-span-3 sm-col-span-2 lg-col-span-1"><a href="../App/views/add_product.php">ADD</a></button>
             <button type="submit" class="product-list__button product-list__button-delete c-button--primary p-small col-span-3 sm-col-span-2 lg-col-span-2" id="delete-product-btn">MASS DELETE</button>
             <div class="product-list__items pt-5 pb-10 grid">
